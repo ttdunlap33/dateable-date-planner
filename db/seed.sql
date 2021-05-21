@@ -71,32 +71,26 @@ VALUES ("Movie Theatre", 4);
 INSERT INTO role (title, indoor_id)
 VALUES ("Escape Room", 5);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Indoor Rock Climbing", $$, 6);
+INSERT INTO role (title, indoor_id)
+VALUES ("Indoor Rock Climbing", 6);
 -- Indoor Activities
 INSERT INTO role (title, indoor_id)
 VALUES ("Yoga", 7);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
+INSERT INTO role (title, indoor_id)
 VALUES ("Nature and Science Museum", $$, 8);
 -- Indoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Drive-in Theatre", $$, 9);
+INSERT INTO role (title, indoor_id)
+VALUES ("Axe Throwing", 11);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Local Concert", $$$, 10);
+INSERT INTO role (title, indoor_id)
+VALUES ("Brewery Hopping", 12);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Axe Throwing", $$, 11);
+INSERT INTO role (title, indoor_id)
+VALUES ("Downtown Aquarium", 13);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Brewery Hopping", $$, 12);
--- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Downtown Aquarium", $$, 13);
--- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Indoor Sydiving", $$$, 14);
+INSERT INTO role (title, indoor_id)
+VALUES ("Indoor Skydiving", 14);
 -- Indoor Activities
 
 
@@ -104,74 +98,81 @@ VALUES ("Indoor Sydiving", $$$, 14);
 INSERT INTO role (title, outdoor_id)
 VALUES ("Fishing", 1);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Hiking", $$, 2);
+INSERT INTO role (title, outdoor_id)
+VALUES ("Hiking", 2);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Rock Climbing", $$, 3);
+INSERT INTO role (title, outdoor_id)
+VALUES ("Rock Climbing", 3);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Rafting", $$, 4);
+INSERT INTO role (title, outdoor_id)
+VALUES ("Rafting", 4);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
+INSERT INTO role (title, outdoor_id)
 VALUES ("Denver Botanic Gardens", $$, 5);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Denver Zoo", $$, 6);
+INSERT INTO role (title, outdoor_id)
+VALUES ("Denver Zoo", 6);
 -- -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id
-VALUES ("Mini Golf", $, 7);
+INSERT INTO role (title, outdoor_id
+VALUES ("Mini Golf", 7);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id
-VALUES ("Tubing", $, 8);
+INSERT INTO role (title, outdoor_id
+VALUES ("Tubing", 8);
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id
-VALUES ("Outdoor sporting event(Rockies/Rapids/Broncos Game)", $$, 9)
+INSERT INTO role (title, outdoor_id
+VALUES ("Outdoor sporting event(Rockies/Rapids/Broncos Game)", 9)
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id
-VALUES ("Explore Red Rocks", $, 10);
+INSERT INTO role (title, outdoor_id
+VALUES ("Explore Red Rocks", 10);
 --Outdoor Activities 
-INSERT INTO role (title, cost, outdoor_id
-VALUES ("Paddleboarding", $, 11);
+INSERT INTO role (title, outdoor_id
+VALUES ("Paddleboarding", 11);
+--Outdoor Activities
+INSERT INTO role (title, outdoor_id)
+VALUES ("Drive-in Theatre", 9);
+-- Outdoor Activities
+INSERT INTO role (title, outdoor_id)
+VALUES ("Local Concert", 10);
+-- Outdoor Activities
 
 
 
 -- At Home Activities 
-INSERT INTO role (title, department_id)
+INSERT INTO role (title, home_id)
 VALUES ("Puzzles", 1);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, home_id)
 VALUES ("Board Games", 250000, 2);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Cook a meal", 250000, 3);
+INSERT INTO role (title, cost, home_id)
+VALUES ("Cook a meal", 3);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Netflix & Chill", 250000, 4);
+INSERT INTO role (title, home_id)
+VALUES ("Netflix & Chill", 4);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Make a Cereal Treat", 250000, 5);
+INSERT INTO role (title, home_id)
+VALUES ("Make a Cereal Treat", 5);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Bake Cookies", 250000, 6);
+INSERT INTO role (title, home_id)
+VALUES ("Bake Cookies", 6);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Video Games", 250000, 7);
+INSERT INTO role (title, home_id)
+VALUES ("Video Games", 7);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Stream an Online Class", 250000, 8);
+INSERT INTO role (title, home_id)
+VALUES ("Stream an Online Class", 8);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Fondue Night", 250000, 9);
+INSERT INTO role (title, home_id)
+VALUES ("Fondue Night", 9);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("At Home Wine Tasting", 250000, 10);
+INSERT INTO role (title, home_id)
+VALUES ("At Home Wine Tasting", 10);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Movie Marathon", 250000, 11);
+INSERT INTO role (title, home_id)
+VALUES ("Movie Marathon", 11);
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Hire professionals for couples massage", 250000, 12);
+INSERT INTO role (title, home_id)
+VALUES ("Hire professionals for couples massage", 12);
 
 
 
