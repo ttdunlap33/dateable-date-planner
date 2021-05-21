@@ -1,39 +1,6 @@
 const router = require('express').Router();
 const { Food } = require('../../models/Food');
 
-router.post('/', async (req, res) => {
-  try {
-    const newFood = await Food.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newFood);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.delete('/:id', async (req, res) => {
-  try {
-    const projectData = await Food.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!foodData) {
-      res.status(404).json({ message: 'No restaurant found with this id!' });
-      return;
-    }
-
-    res.status(200).json(foodData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get('/:id', (req, res) => {
   Food.findAll({
     include:[{
@@ -58,5 +25,39 @@ router.get('/:id', (req, res) => {
 Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
   // single random encounter
 }); 
+
+router.post('/', async (req, res) => {
+  try {
+    const newFood = await Food.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newFood);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const foodData = await Food.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (!foodData) {
+      res.status(404).json({ message: 'No restaurant found with this id!' });
+      return;
+    }
+
+    res.status(200).json(foodData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
