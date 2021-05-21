@@ -10,54 +10,54 @@ VALUES ("At Home Activities");
 
 -- Role Array --
 INSERT INTO role (title, cost, food_id)
-VALUES ("Watercourse", $$, 1);
+VALUES ("Watercourse", "$$", 1);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Tropical Smoothie", $$, 2);
+VALUES ("Tropical Smoothie", "$$", 2);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Woody's Woodfired Pizza", cost, 3);
+VALUES ("Woody's Woodfired Pizza", "$$", 3);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("West on 29th", $$$$, 4);
+VALUES ("West on 29th", "$$$$", 4);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Himchuli", $$$, 5);
+VALUES ("Himchuli", "$$$", 5);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("City O' City", $$, 6);
+VALUES ("City O' City", "$$", 6);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Lucile's Creole Cafe", $$, 7);
+VALUES ("Lucile's Creole Cafe", "$$", 7);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Sassafras", $$, 8);
+VALUES ("Sassafras", "$$", 8);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Blue Pan", $$, 9);
+VALUES ("Blue Pan", "$$", 9);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Work & Class", $$, 10);
+VALUES ("Work & Class", "$$", 10);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Sushi Sasa", $$$, 11);
+VALUES ("Sushi Sasa", "$$$", 11);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Los Chingones", $$, 12);
+VALUES ("Los Chingones", "$$", 12);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Sol", $$, 13);
+VALUES ("Sol", "$$", 13);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Little Ollies", $$, 14);
+VALUES ("Little Ollies", "$$", 14);
 -- Food
 INSERT INTO role (title, cost, food_id)
-VALUES ("Happa", $$, 15);
+VALUES ("Happa", "$$", 15);
 
 
 -- Indoor Activities
-INSERT INTO role (activity, cost, indoor_id)
-VALUES ("Bowling", $$, 1);
+INSERT INTO role (activity, indoor_id)
+VALUES ("Bowling", 1);
 -- Indoor Activities
 INSERT INTO role (title, cost, indoor_id)
 VALUES ("Go Karts", $$, 2);
@@ -101,8 +101,8 @@ VALUES ("Indoor Sydiving", $$$, 14);
 
 
 -- Outdoor Activities
-INSERT INTO role (title, cost, outdoor_id)
-VALUES ("Fishing", $$, 1);
+INSERT INTO role (title, outdoor_id)
+VALUES ("Fishing", 1);
 -- Outdoor Activities
 INSERT INTO role (title, cost, outdoor_id)
 VALUES ("Hiking", $$, 2);
@@ -119,26 +119,26 @@ VALUES ("Denver Botanic Gardens", $$, 5);
 INSERT INTO role (title, cost, outdoor_id)
 VALUES ("Denver Zoo", $$, 6);
 -- -- Outdoor Activities
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, outdoor_id
 VALUES ("Mini Golf", $, 7);
 -- Outdoor Activities
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, outdoor_id
 VALUES ("Tubing", $, 8);
 -- Outdoor Activities
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, outdoor_id
 VALUES ("Outdoor sporting event(Rockies/Rapids/Broncos Game)", $$, 9)
 -- Outdoor Activities
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, outdoor_id
 VALUES ("Explore Red Rocks", $, 10);
 --Outdoor Activities 
-INSERT INTO role (title, cost, department_id)
+INSERT INTO role (title, cost, outdoor_id
 VALUES ("Paddleboarding", $, 11);
 
 
 
 -- At Home Activities 
-INSERT INTO role (title, cost, department_id)
-VALUES ("Puzzles", 250000, 1);
+INSERT INTO role (title, department_id)
+VALUES ("Puzzles", 1);
 -- At Home Activities 
 INSERT INTO role (title, cost, department_id)
 VALUES ("Board Games", 250000, 2);
@@ -174,7 +174,6 @@ INSERT INTO role (title, cost, department_id)
 VALUES ("Hire professionals for couples massage", 250000, 12);
 
 
- 
 
 
 

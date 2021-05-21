@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Project extends Model {}
 
-Project.init(
+Food.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,29 +11,21 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    cost: {
       type: DataTypes.STRING,
+      allowNull: true
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+  //   user_id: {
+  //     type: DataTypes.INTEGER,
+  //     references: {
+  //       model: 'user',
+  //       key: 'id',
+  //     },
+  //   },
   },
   {
     sequelize,
