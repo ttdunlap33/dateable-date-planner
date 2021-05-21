@@ -59,23 +59,23 @@ VALUES ("Happa", "$$", 15);
 INSERT INTO role (activity, indoor_id)
 VALUES ("Bowling", 1);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Go Karts", $$, 2);
+INSERT INTO role (title, indoor_id)
+VALUES ("Go Karts", 2);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Arcade", $$, 3);
+INSERT INTO role (title, indoor_id)
+VALUES ("Arcade", 3);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Movie Theatre", $$, 4);
+INSERT INTO role (title, indoor_id)
+VALUES ("Movie Theatre", 4);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Escape Room", $$, 5);
+INSERT INTO role (title, indoor_id)
+VALUES ("Escape Room", 5);
 -- Indoor Activities
 INSERT INTO role (title, cost, indoor_id)
 VALUES ("Indoor Rock Climbing", $$, 6);
 -- Indoor Activities
-INSERT INTO role (title, cost, indoor_id)
-VALUES ("Yoga", $$, 7);
+INSERT INTO role (title, indoor_id)
+VALUES ("Yoga", 7);
 -- Indoor Activities
 INSERT INTO role (title, cost, indoor_id)
 VALUES ("Nature and Science Museum", $$, 8);
