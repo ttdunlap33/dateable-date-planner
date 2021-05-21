@@ -22,9 +22,15 @@ router.get('/:id', (req, res) => {
   // find a single restaurant by its `id`
 });
 
-Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
-  // single random encounter
-}); 
+// Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
+//   // single random encounter
+// });
+
+// Model.find({
+//   order: [
+//     Sequelize.fn( 'RAND' ),
+//   ]
+// });
 
 router.post('/', async (req, res) => {
   try {
