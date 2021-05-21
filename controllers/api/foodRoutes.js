@@ -35,7 +35,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Product.findOne({
+  Food.findAll({
     include:[{
       model: Food,
       through: food_id,
@@ -54,5 +54,9 @@ router.get('/:id', (req, res) => {
     });
   // find a single restaurant by its `id`
 });
+
+Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
+  // single random encounter
+}); 
 
 module.exports = router;
