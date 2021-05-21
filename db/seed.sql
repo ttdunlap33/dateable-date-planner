@@ -59,38 +59,38 @@ VALUES ("Happa", "$$", 15);
 INSERT INTO role (activity, indoor_id)
 VALUES ("Bowling", 1);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Go Karts", 2);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Arcade", 3);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Movie Theatre", 4);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Escape Room", 5);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Indoor Rock Climbing", 6);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Yoga", 7);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
+INSERT INTO role (activity, indoor_id)
 VALUES ("Nature and Science Museum", $$, 8);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
-VALUES ("Axe Throwing", 11);
+INSERT INTO role (activity, indoor_id)
+VALUES ("Axe Throwing", 9);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
-VALUES ("Brewery Hopping", 12);
+INSERT INTO role (activity, indoor_id)
+VALUES ("Brewery Hopping", 10);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
-VALUES ("Downtown Aquarium", 13);
+INSERT INTO role (activity, indoor_id)
+VALUES ("Downtown Aquarium", 11);
 -- Indoor Activities
-INSERT INTO role (title, indoor_id)
-VALUES ("Indoor Skydiving", 14);
+INSERT INTO role (activity, indoor_id)
+VALUES ("Indoor Skydiving", 12);
 -- Indoor Activities
 
 
@@ -129,10 +129,10 @@ INSERT INTO role (title, outdoor_id
 VALUES ("Paddleboarding", 11);
 --Outdoor Activities
 INSERT INTO role (title, outdoor_id)
-VALUES ("Drive-in Theatre", 9);
+VALUES ("Drive-in Theatre", 12);
 -- Outdoor Activities
 INSERT INTO role (title, outdoor_id)
-VALUES ("Local Concert", 10);
+VALUES ("Local Concert", 13);
 -- Outdoor Activities
 
 
@@ -141,10 +141,10 @@ VALUES ("Local Concert", 10);
 INSERT INTO role (title, home_id)
 VALUES ("Puzzles", 1);
 -- At Home Activities 
-INSERT INTO role (title, cost, home_id)
-VALUES ("Board Games", 250000, 2);
+INSERT INTO role (title, home_id)
+VALUES ("Board Games", 2);
 -- At Home Activities 
-INSERT INTO role (title, cost, home_id)
+INSERT INTO role (title, home_id)
 VALUES ("Cook a meal", 3);
 -- At Home Activities 
 INSERT INTO role (title, home_id)

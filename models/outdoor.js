@@ -11,21 +11,17 @@ Outdoor.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    activity: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    cost: {
-      type: DataTypes.STRING,
-      allowNull: true
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
-  //   user_id: {
-  //     type: DataTypes.INTEGER,
-  //     references: {
-  //       model: 'user',
-  //       key: 'id',
-  //     },
-  //   },
   },
   {
     sequelize,
