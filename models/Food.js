@@ -17,7 +17,7 @@ Food.init(
     },
     cost: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,

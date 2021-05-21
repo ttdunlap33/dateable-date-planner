@@ -1,10 +1,10 @@
-const User = require('./User');
+const User = require('./user');
 const Food = require('./food');
 const Indoor = require('./indoor');
 const Outdoor = require('./outdoor');
 const Home = require('./home');
 
-User.hasMany(Project, {
+User.hasMany(Food, Indoor, Outdoor, Home, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
