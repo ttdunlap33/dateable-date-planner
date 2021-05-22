@@ -8,6 +8,11 @@ router.get('/:id', (req, res) => {
       through: food_id,
       as: "Restaurants"
     }],
+    // for (i = 0; i < length; i++) {
+    //   var index = Math.floor(Math.random() * options.length);
+    //   var computerChoice = options[index];
+    //   passsword = passsword + computerChoice;
+    // }
     where: {
       id: req.params.id
     }
