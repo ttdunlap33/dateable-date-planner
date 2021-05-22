@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 Food.get('/', withAuth, (req, res) => { 
   Food.findAll({
     include:[{
-      model: Food,
+      model: food,
       through: food_id,
       as: "Restaurants"
     }],

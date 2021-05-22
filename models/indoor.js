@@ -32,4 +32,4 @@ Indoor.init(
   }
 );
 
-module.exports = indoor;
+module.exports = Indoor;

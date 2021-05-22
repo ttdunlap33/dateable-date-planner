@@ -7,18 +7,18 @@ Indoor.get('/', withAuth, (req, res) => {
     include:[{
       model: Indoor,
       through: indoor_id,
-      as: "Restaurants"
+      as: "Indoor"
     }],
     where: {
       id: req.params.id
     }
 
-  }).then(Data => {
+  }).then(indoorData => {
     if (!indoorData) {
       res.status(404).json({message:"Could not find an indoor activity with that id."})
     }
     const randomIndex = getRandomInt(0, indoorData.length)
-    res.json(foodData[randomIndex])}).catch(err => {
+    res.json(indoorData[randomIndex])}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -28,7 +28,7 @@ Indoor.get('/', withAuth, (req, res) => {
 
 Indoor.post('/', withAuth, async (req, res) => {
   try {
-    const newIndoor = await Food.create({
+    const newIndoor = await Indoor.create({
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -66,4 +66,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Food;
+module.exports = Indoor;
