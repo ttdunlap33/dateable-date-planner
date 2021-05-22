@@ -1,24 +1,15 @@
 const router = require('express').Router();
-const { home } = require('../../models/Home');
+const { Food } = require('../../models/Home');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
-  Home.findAll({
-    include:[{
-      model: home,
-      through: home_id,
-      as: "Home Activities"
-    }],
-    where: {
-      id: req.params.id
+  Home.findAll(
+  ).then(foodData => {
+    if (!foodData) {
+      res.status(404).json({message:"Could not find a restaurant with that id."})
     }
-
-  }).then(homeData => {
-    if (!homeData) {
-      res.status(404).json({message:"Could not find a home activity with that id."})
-    }
-    const randomIndex = getRandomInt(0, homeData.length)
-    res.json(homeData[randomIndex])}).catch(err => {
+    const randomIndex = getRandomInt(0, foodData.length)
+    res.json(foodData[randomIndex])}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -30,10 +21,10 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const newHome = await Home.create({
       ...req.body,
-      home_id: req.session.home_id,
+      user_id: req.session.user_id,
     });
 
-    res.status(200).json(newHome);
+    res.status(200).json(newFood);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -44,16 +35,16 @@ router.delete('/:id', withAuth, async (req, res) => {
     const homeData = await Home.destroy({
       where: {
         id: req.params.id,
-        home_id: req.session.home_id,
+        user_id: req.session.user_id,
       },
     });
 
     if (!homeData) {
-      res.status(404).json({ message: 'No home activity found with this id!' });
+      res.status(404).json({ message: 'No restaurant found with this id!' });
       return;
     }
 
-    res.status(200).json(homeData);
+    res.status(200).json(foodData);
   } catch (err) {
     res.status(500).json(err);
   }
