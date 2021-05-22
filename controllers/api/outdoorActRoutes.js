@@ -6,7 +6,7 @@ Outdoor.get('/', withAuth, (req, res) => {
   Food.findAll({
     include:[{
       model: Outdoor,
-      through: food_id,
+      through: outdoor_id,
       as: "Outdoor"
     }],
     where: {
@@ -15,7 +15,7 @@ Outdoor.get('/', withAuth, (req, res) => {
 
   }).then(outdoorData => {
     if (!outdoorData) {
-      res.status(404).json({message:"Could not find a restaurant with that id."})
+      res.status(404).json({message:"Could not find an outdoor activity with that id."})
     }
     const randomIndex = getRandomInt(0, outdoorData.length)
     res.json(outdoorData[randomIndex])}).catch(err => {
@@ -26,7 +26,7 @@ Outdoor.get('/', withAuth, (req, res) => {
 });
 
 
-Outdoor.post('/', async (req, res) => {
+Outdoor.post('/', withAuth, async (req, res) => {
   try {
     const newOutdoor = await Outdoor.create({
       ...req.body,
@@ -39,7 +39,7 @@ Outdoor.post('/', async (req, res) => {
   }
 });
 
-Outdoor.delete('/:id', async (req, res) => {
+Outdoor.delete('/:id', withAuth, async (req, res) => {
   try {
     const outdoorData = await Outdoor.destroy({
       where: {

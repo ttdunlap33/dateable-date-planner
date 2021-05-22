@@ -26,7 +26,7 @@ Food.get('/', withAuth, (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+Food.post('/', withAuth, async (req, res) => {
   try {
     const newFood = await Food.create({
       ...req.body,
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+Food.delete('/:id', withAuth, async (req, res) => {
   try {
     const foodData = await Food.destroy({
       where: {
@@ -66,4 +66,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = router;
+module.exports = Food;
