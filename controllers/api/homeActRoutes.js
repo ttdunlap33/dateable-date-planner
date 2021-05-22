@@ -1,11 +1,36 @@
 const router = require('express').Router();
-const { Home } = require('../../models/home');
+const { home } = require('../../models/Home');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+Home.get('/', withAuth, (req, res) => { 
+  Home.findAll({
+    include:[{
+      model: home,
+      through: home_id,
+      as: "Home Activities"
+    }],
+    where: {
+      id: req.params.id
+    }
+
+  }).then(homeData => {
+    if (!homeData) {
+      res.status(404).json({message:"Could not find a home activity with that id."})
+    }
+    const randomIndex = getRandomInt(0, homeData.length)
+    res.json(homeData[randomIndex])}).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  // find a single restaurant by its `id`
+});
+
+
+Home.post('/', withAuth, async (req, res) => {
   try {
-    const newHomeAct = await Home.create({
+    const newHome = await Home.create({
       ...req.body,
-      user_id: req.session.user_id,
+      home_id: req.session.home_id,
     });
 
     res.status(200).json(newHome);
@@ -14,19 +39,17 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+Home.delete('/:id', withAuth, async (req, res) => {
   try {
     const homeData = await Home.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        home_id: req.session.home_id,
       },
     });
 
     if (!homeData) {
-      res
-        .status(404)
-        .json({ message: 'No at home activity found with this id!' });
+      res.status(404).json({ message: 'No home activity found with this id!' });
       return;
     }
 
@@ -36,4 +59,11 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+
+module.exports = Home;

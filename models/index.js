@@ -1,8 +1,8 @@
 const User = require('./user');
 const Food = require('./food');
-const Indoor = require('./indoor');
-const Outdoor = require('./outdoor');
-const Home = require('./home');
+const Indoor = require('./Indoor');
+const Outdoor = require('./Outdoor');
+const Home = require('./Home');
 
 User.hasMany(Food, Indoor, Outdoor, Home, {
   foreignKey: 'user_id',

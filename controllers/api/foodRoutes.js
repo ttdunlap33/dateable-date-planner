@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 Food.get('/', withAuth, (req, res) => { 
   Food.findAll({
     include:[{
-      model: Food,
+      model: food,
       through: food_id,
       as: "Restaurants"
     }],
@@ -38,7 +38,9 @@ Food.post('/', withAuth, async (req, res) => {
   }
 });
 
-Food.delete('/:id', withAuth,async (req, res) => {
+
+Food.delete('/:id', withAuth, async (req, res) => {
+
   try {
     const foodData = await Food.destroy({
       where: {
@@ -65,5 +67,6 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = router;
+
+module.exports = Food;
 
