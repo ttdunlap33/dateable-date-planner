@@ -2,13 +2,7 @@ const router = require('express').Router();
 const { Food } = require('../../models/Food');
 const withAuth = require('../../utils/auth');
 
-Food.get('/', withAuth, (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.status(401).json({
-  //       message: "This action requires you to be logged in",
-  //   });
-  //   return;
-  
+Food.get('/', withAuth, (req, res) => { 
   Food.findAll({
     include:[{
       model: Food,
@@ -31,15 +25,6 @@ Food.get('/', withAuth, (req, res) => {
   // find a single restaurant by its `id`
 });
 
-// Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
-//   // single random encounter
-// });
-
-// Model.find({
-//   order: [
-//     Sequelize.fn( 'RAND' ),
-//   ]
-// });
 
 router.post('/', async (req, res) => {
   try {
