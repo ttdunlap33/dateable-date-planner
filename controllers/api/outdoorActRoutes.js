@@ -2,20 +2,11 @@ const router = require('express').Router();
 const { Outdoor } = require('../../models/Outdoor');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => { 
-  Food.findAll({
-    include:[{
-      model: Outdoor,
-      through: outdoor_id,
-      as: "Outdoor"
-    }],
-    where: {
-      id: req.params.id
-    }
-
-  }).then(outdoorData => {
+router.get('/', withAuth, (req, res) => { 
+  Outdoor.findAll(
+  ).then(outdoorData => {
     if (!outdoorData) {
-      res.status(404).json({message:"Could not find an outdoor activity with that id."})
+      res.status(404).json({message:"Could not find a restaurant with that id."})
     }
     const randomIndex = getRandomInt(0, outdoorData.length)
     res.json(outdoorData[randomIndex])}).catch(err => {
@@ -49,11 +40,11 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!outdoorData) {
-      res.status(404).json({ message: 'No outdoor activity found with this id!' });
+      res.status(404).json({ message: 'No restaurant found with this id!' });
       return;
     }
 
-    res.status(200).json(outdoorData);
+    res.status(200).json(outdooData);
   } catch (err) {
     res.status(500).json(err);
   }

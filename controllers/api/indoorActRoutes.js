@@ -1,19 +1,11 @@
 const router = require('express').Router();
-const { Indoor } = require('../../models/Food');
+const { Indoor } = require('../../models/Indoor');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
-  Indoor.findAll({
-    include:[{
-      model: Indoor,
-      through: indoor_id,
-      as: "Indoor"
-    }],
-    where: {
-      id: req.params.id
-    }
+  Indoor.findAll(
 
-  }).then(indoorData => {
+  ).then(indoorData => {
     if (!indoorData) {
       res.status(404).json({message:"Could not find an indoor activity with that id."})
     }

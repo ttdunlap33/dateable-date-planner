@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const { Food } = require('../../models/Home');
+const { Home } = require('../../models/Home');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
   Home.findAll(
-  ).then(foodData => {
-    if (!foodData) {
-      res.status(404).json({message:"Could not find a restaurant with that id."})
+  ).then(homeData => {
+    if (!homeData) {
+      res.status(404).json({message:"Could not find a home activity with that id."})
     }
-    const randomIndex = getRandomInt(0, foodData.length)
-    res.json(foodData[randomIndex])}).catch(err => {
+    const randomIndex = getRandomInt(0, homeData.length)
+    res.json(homeData[randomIndex])}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -24,7 +24,7 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newFood);
+    res.status(200).json(newHome);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -40,11 +40,11 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!homeData) {
-      res.status(404).json({ message: 'No restaurant found with this id!' });
+      res.status(404).json({ message: 'No home activity found with this id!' });
       return;
     }
 
-    res.status(200).json(foodData);
+    res.status(200).json(homeData);
   } catch (err) {
     res.status(500).json(err);
   }
