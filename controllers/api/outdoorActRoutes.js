@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Outdoor } = require('../../models/Outdoor');
 const withAuth = require('../../utils/auth');
 
-Outdoor.get('/', withAuth, (req, res) => { 
+router.get('/', withAuth, async (req, res) => { 
   Food.findAll({
     include:[{
       model: Outdoor,
@@ -26,7 +26,7 @@ Outdoor.get('/', withAuth, (req, res) => {
 });
 
 
-Outdoor.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newOutdoor = await Outdoor.create({
       ...req.body,
@@ -39,7 +39,7 @@ Outdoor.post('/', withAuth, async (req, res) => {
   }
 });
 
-Outdoor.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const outdoorData = await Outdoor.destroy({
       where: {
@@ -66,4 +66,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Outdoor;
+module.exports = router;

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Indoor } = require('../../models/Food');
 const withAuth = require('../../utils/auth');
 
-Indoor.get('/', withAuth, (req, res) => { 
+router.get('/', withAuth, (req, res) => { 
   Indoor.findAll({
     include:[{
       model: Indoor,
@@ -26,7 +26,7 @@ Indoor.get('/', withAuth, (req, res) => {
 });
 
 
-Indoor.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newIndoor = await Indoor.create({
       ...req.body,
@@ -39,7 +39,7 @@ Indoor.post('/', withAuth, async (req, res) => {
   }
 });
 
-Indoor.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const indoorData = await Indoor.destroy({
       where: {
@@ -66,4 +66,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Indoor;
+module.exports = router;

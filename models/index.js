@@ -22,4 +22,4 @@ Home.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-module.exports = { User, Indoor, Outdoor, Home };
+module.exports = { User, Indoor, Outdoor, Home, Food };

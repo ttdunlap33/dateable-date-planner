@@ -2,18 +2,9 @@ const router = require('express').Router();
 const { Food } = require('../../models/Food');
 const withAuth = require('../../utils/auth');
 
-Food.get('/', withAuth, (req, res) => { 
-  Food.findAll({
-    include:[{
-      model: food,
-      through: food_id,
-      as: "Restaurants"
-    }],
-    where: {
-      id: req.params.id
-    }
-
-  }).then(foodData => {
+router.get('/', withAuth, (req, res) => { 
+  Food.findAll(
+  ).then(foodData => {
     if (!foodData) {
       res.status(404).json({message:"Could not find a restaurant with that id."})
     }
@@ -26,7 +17,7 @@ Food.get('/', withAuth, (req, res) => {
 });
 
 
-Food.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newFood = await Food.create({
       ...req.body,
@@ -39,7 +30,7 @@ Food.post('/', withAuth, async (req, res) => {
   }
 });
 
-Food.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const foodData = await Food.destroy({
       where: {
@@ -66,4 +57,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Food;
+module.exports = router;

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { home } = require('../../models/Home');
 const withAuth = require('../../utils/auth');
 
-Home.get('/', withAuth, (req, res) => { 
+router.get('/', withAuth, (req, res) => { 
   Home.findAll({
     include:[{
       model: home,
@@ -26,7 +26,7 @@ Home.get('/', withAuth, (req, res) => {
 });
 
 
-Home.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newHome = await Home.create({
       ...req.body,
@@ -39,7 +39,7 @@ Home.post('/', withAuth, async (req, res) => {
   }
 });
 
-Home.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const homeData = await Home.destroy({
       where: {
@@ -66,4 +66,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Home;
+module.exports = router;
