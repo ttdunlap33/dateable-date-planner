@@ -22,7 +22,6 @@ Food.get('/', withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  // find a single restaurant by its `id`
 });
 
 
@@ -39,7 +38,9 @@ Food.post('/', withAuth, async (req, res) => {
   }
 });
 
+
 Food.delete('/:id', withAuth, async (req, res) => {
+
   try {
     const foodData = await Food.destroy({
       where: {
@@ -66,4 +67,6 @@ function getRandomInt(min, max) {
 }
 
 
+
 module.exports = Food;
+
