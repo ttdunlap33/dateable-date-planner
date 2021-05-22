@@ -1,41 +1,30 @@
 const router = require('express').Router();
 const { Food } = require('../../models/Food');
+const withAuth = require('../../utils/auth');
 
-router.get('/:id', (req, res) => {
+Food.get('/', withAuth, (req, res) => { 
   Food.findAll({
     include:[{
       model: Food,
       through: food_id,
       as: "Restaurants"
     }],
-    // for (i = 0; i < length; i++) {
-    //   var index = Math.floor(Math.random() * options.length);
-    //   var computerChoice = options[index];
-    //   passsword = passsword + computerChoice;
-    // }
     where: {
       id: req.params.id
     }
+
   }).then(foodData => {
     if (!foodData) {
       res.status(404).json({message:"Could not find a restaurant with that id."})
     }
-    res.json(foodData)}).catch(err => {
+    const randomIndex = getRandomInt(0, foodData.length)
+    res.json(foodData[randomIndex])}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
   // find a single restaurant by its `id`
 });
 
-// Encounter.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((encounters) => {
-//   // single random encounter
-// });
-
-// Model.find({
-//   order: [
-//     Sequelize.fn( 'RAND' ),
-//   ]
-// });
 
 router.post('/', async (req, res) => {
   try {
@@ -69,6 +58,12 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
 
 
 module.exports = router;
