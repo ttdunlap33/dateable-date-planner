@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Indoor extends Model {}
+class Post extends Model {}
 
-Indoor.init(
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,25 +11,33 @@ Indoor.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activity: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
+    description: {
       type: DataTypes.INTEGER,
-      references: {
+    },
+  date_created: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
+},
+user_id: {
+    type: DataTypes.INTEGER,
+    references: {
         model: 'user',
         key: 'id',
-      },
     },
-  },
+},
+},
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'indoor',
+    modelName: 'post',
   }
 );
 
-module.exports = indoor;
+module.exports = Post;
