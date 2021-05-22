@@ -1,19 +1,11 @@
 const router = require('express').Router();
-const { Indoor } = require('../../models/Food');
+const { Indoor } = require('../../models/Indoor');
 const withAuth = require('../../utils/auth');
 
-Indoor.get('/', withAuth, (req, res) => { 
-  Indoor.findAll({
-    include:[{
-      model: Indoor,
-      through: indoor_id,
-      as: "Indoor"
-    }],
-    where: {
-      id: req.params.id
-    }
+router.get('/', withAuth, (req, res) => { 
+  Indoor.findAll(
 
-  }).then(indoorData => {
+  ).then(indoorData => {
     if (!indoorData) {
       res.status(404).json({message:"Could not find an indoor activity with that id."})
     }
@@ -26,7 +18,7 @@ Indoor.get('/', withAuth, (req, res) => {
 });
 
 
-Indoor.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newIndoor = await Indoor.create({
       ...req.body,
@@ -39,7 +31,7 @@ Indoor.post('/', withAuth, async (req, res) => {
   }
 });
 
-Indoor.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const indoorData = await Indoor.destroy({
       where: {
@@ -66,4 +58,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Indoor;
+module.exports = router;

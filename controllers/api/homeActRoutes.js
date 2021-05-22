@@ -1,19 +1,10 @@
 const router = require('express').Router();
-const { home } = require('../../models/Home');
+const { Home } = require('../../models/Home');
 const withAuth = require('../../utils/auth');
 
-Home.get('/', withAuth, (req, res) => { 
-  Home.findAll({
-    include:[{
-      model: home,
-      through: home_id,
-      as: "Home Activities"
-    }],
-    where: {
-      id: req.params.id
-    }
-
-  }).then(homeData => {
+router.get('/', withAuth, (req, res) => { 
+  Home.findAll(
+  ).then(homeData => {
     if (!homeData) {
       res.status(404).json({message:"Could not find a home activity with that id."})
     }
@@ -26,11 +17,11 @@ Home.get('/', withAuth, (req, res) => {
 });
 
 
-Home.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newHome = await Home.create({
       ...req.body,
-      home_id: req.session.home_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newHome);
@@ -39,12 +30,12 @@ Home.post('/', withAuth, async (req, res) => {
   }
 });
 
-Home.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const homeData = await Home.destroy({
       where: {
         id: req.params.id,
-        home_id: req.session.home_id,
+        user_id: req.session.user_id,
       },
     });
 
@@ -66,4 +57,4 @@ function getRandomInt(min, max) {
 }
 
 
-module.exports = Home;
+module.exports = router;
