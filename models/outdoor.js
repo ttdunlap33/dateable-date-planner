@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Outdoor extends Model {}
+class Outdoor extends Model { }
 
 Outdoor.init(
   {
