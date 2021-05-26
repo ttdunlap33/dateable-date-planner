@@ -1,13 +1,10 @@
-const User = require('./users');
-const Food = require('./food');
-const Indoor = require('./Indoor');
-const Outdoor = require('./Outdoor');
-const Home = require('./Home');
+const User = require('./User')
+const Food = require('./Food');
+const Indoor = require('./indoor');
+const Outdoor = require('./outdoor');
+const Home = require('./home');
 
-// User.hasMany(Food, Indoor, Outdoor, Home, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+
 User.hasMany(Food, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
