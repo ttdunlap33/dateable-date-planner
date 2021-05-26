@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const foodRoutes = require('./foodRoutes');
-const indoorRoutes = require('./indoorActRoutes');
-const outdoorRoutes = require('./outdoorActRoutes');
-const homeRoutes = require('./homeActRoutes');
+const indoorActRoutes = require('./indoorActRoutes');
+const outdoorActRoutes = require('./outdoorActRoutes');
+const homeActRoutes = require('./homeActRoutes');
 
 router.use('/users', userRoutes);
 router.use('/food', foodRoutes);
