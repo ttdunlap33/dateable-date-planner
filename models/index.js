@@ -6,24 +6,24 @@ const Home = require('./home');
 
 
 User.hasMany(Food, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-  });
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
 User.hasMany(Indoor, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-  });
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-  User.hasMany(Outdoor, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-  });
+User.hasMany(Outdoor, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-  User.hasMany(Home, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-  });
+User.hasMany(Home, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
 
 Food.belongsTo(User, {
