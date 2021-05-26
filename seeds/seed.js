@@ -1,28 +1,23 @@
+const seedPosts = require('./blog-seeds');
+const seedUsers = require('./user-seeds');
+const seedComments = require('./comment-seeds');
+
 const sequelize = require('../config/connection');
-const { User, Food, Home, Indoor, Outdoor } = require('../models');
 
-const userData = require('./userData.json');
-const foodData = require('./foodData.json');
-const indoorData = require('./indoorData.json');
-const outdoorData = require('./outdoorData.json');
-const homeData = require('./homeData.json');
-
-const seedDatabase = async () => {
+const seedAll = async () => {
   await sequelize.sync({ force: true });
+  console.log('\n----- DATABASE SYNCED -----\n');
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await seedHome();
+  console.log('\n----- USERS SEEDED -----\n');
 
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: req.params.id
-    });
-  }
+  await seedIndoor();
+  console.log('\n----- POSTS SEEDED -----\n');
+
+  await seedFood();
+  console.log('\n----- COMMENTS SEEDED -----\n');
 
   process.exit(0);
 };
 
-seedDatabase();
+seedAll();
