@@ -87,7 +87,7 @@ INSERT INTO role (activity, indoor_id)
 VALUES ("Brewery Hopping", 10);
 -- Indoor Activities
 INSERT INTO role (activity, indoor_id)
-VALUES ("Downtown Aquarium", 11);
+VALUES ("Aquarium", 11);
 -- Indoor Activities
 INSERT INTO role (activity, indoor_id)
 VALUES ("Indoor Skydiving", 12);
