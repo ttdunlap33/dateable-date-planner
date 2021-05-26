@@ -4,10 +4,7 @@ const Indoor = require('./indoor');
 const Outdoor = require('./outdoor');
 const Home = require('./home');
 
-// User.hasMany(Food, Indoor, Outdoor, Home, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+
 User.hasMany(Food, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
