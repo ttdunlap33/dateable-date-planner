@@ -1,4 +1,4 @@
-const User = require('./user');
+const User = require('./users');
 const Food = require('./food');
 const Indoor = require('./Indoor');
 const Outdoor = require('./Outdoor');
