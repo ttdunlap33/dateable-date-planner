@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Outdoor } = require('../../models/Outdoor');
+const { Outdoor } = require('../../models/outdoor');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
