@@ -4,11 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{#if name}}
-    <title>Tech Blog: {{name}}</title>
-    {{else}}
-    <title>Tech Blog</title>
-    {{/if}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="/public/css/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -16,12 +11,14 @@
 
 <div class="wrapper">
     <header>
-
+        {{#if name}}
+        <title>Tech Blog: {{name}}</title>
+        {{else}}
+        <title>Tech Blog</title>
+        {{/if}}
         <nav class="navbar mt-2">
             {{#if loggedIn}}
-            <a href="/homepage" class="navbar-item is-hoverable pt-1">Homepage</a>
             <a href="/dashboard" class="navbar-item is-hoverable pt-1">Dashboard</a>
-            <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">Create Post</a>
             {{else}}
             <a href="/login" class="navbar-item is-hoverable pt-1">Login</a>
             {{/if}}
