@@ -1,7 +1,7 @@
-const seedPosts = require('./blog-seeds');
-const seedUsers = require('./user-seeds');
-const seedComments = require('./comment-seeds');
-
+const seedHome = require('./homeData');
+const seedIndoor = require('./indoorData');
+const seedFood = require('./foodData');
+const seedOutdoor = require('./outdoorData');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
@@ -12,10 +12,13 @@ const seedAll = async () => {
   console.log('\n----- USERS SEEDED -----\n');
 
   await seedIndoor();
-  console.log('\n----- POSTS SEEDED -----\n');
+  console.log('\n----- INDOOR SEEDED -----\n');
 
   await seedFood();
-  console.log('\n----- COMMENTS SEEDED -----\n');
+  console.log('\n----- FOOD SEEDED -----\n');
+
+  await seedOutdoor();
+  console.log('\n----- OUTDOOR SEEDED -----\n');
 
   process.exit(0);
 };
