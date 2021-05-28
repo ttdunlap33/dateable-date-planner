@@ -1,17 +1,16 @@
 <div class="mb-5 pt-3">
-    <a href="/dashboard/create/"><button id="create-post" class="button is-pulled-right"
-            style="background-color: royalblue; color: white;">Create Post</button></a>
+        <a href="/dashboard/create/"><button id="create-post" class="button is-pulled-right"
+                        style="background-color: royalblue; color: white;">Create Post</button></a>
 
-    <h2 class="title pb-4">Dashboard: Your Posts</h2>
-    <hr>
-    {{#if blogs.length}}
+        <h2 class="title pb-4">Dashboard: Your Posts</h2>
+        <hr>
+        {{#if resturant.length}}
 </div>
 
 {{#each resturant }}
-{{> blog-info blog}}
 
 <a href="/dashboard/edit/{{resturaunt.id}}"><button class="button mb-5 ml-5"
-        style="color: black; background-color: lightblue;">Edit Post</button></a>
+                style="color: black; background-color: lightblue;">Edit Post</button></a>
 </div>
 {{/each}}
 <p> {{resturant.title}}</p>
