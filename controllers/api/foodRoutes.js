@@ -2,14 +2,13 @@ const router = require('express').Router();
 const { Food } = require('../../models/Food');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, (req, res) => { 
+router.get('/', (req, res) => { 
   Food.findAll(
   ).then(foodData => {
     if (!foodData) {
       res.status(404).json({message:"Could not find a restaurant with that id."})
     }
-    const randomIndex = getRandomInt(0, foodData.length)
-    res.json(foodData[randomIndex])}).catch(err => {
+    res.json(foodData)}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -50,14 +49,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
-
-
 
 module.exports = router;
 
