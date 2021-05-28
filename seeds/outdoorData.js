@@ -42,6 +42,6 @@ const outdoorData = [
     },
 ]
 
-const seedUsers = () => User.bulkCreate(userData);
+const seedOutdoor = () => Outdoor.bulkCreate(outdoorData);
 
-module.exports = seedUsers;
+module.exports = seedOutdoor;

@@ -1,35 +1,40 @@
 const router = require('express').Router();
-const { Food, Indoor, Outdoor, Home} = require('../models');
+const { Food, Indoor, Outdoor, Home, User} = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
+  console.log('string')
   try {
     // Get all projects and JOIN with user data
     const foodData = await Food.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['title', 'cost'],
-        },
-      ],
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['title', 'cost'],
+      //   },
+      // ],
     });
-
+ 
     // Serialize data so the template can read it
-    const restaurant = foodData.map((Food) => Food.get({ plain: true }));
-
+    const restaurant = foodData.map((food) => food.get({ plain: true }));
+    console.log("THIS IS RES", restaurant)
+    var index = Math.floor(Math.random * restaurant.length)
+    var singularRes = restaurant[index]
     // Pass serialized data and session flag into template
     res.render('dashboard', { 
-      restaurant, 
+     singularRes, 
       logged_in: req.session.logged_in 
     });
+    
+  
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/indoor', withAuth, async (req, res) => {
   try {
-    const indoorData = await Indoor.finadAll({
+    const indoorData = await Indoor.findAll({
       include: [
         {
           model: Indoor,
@@ -50,7 +55,7 @@ router.get('/', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/', async (req, res) => {
+router.get('/outdoor', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const outdoorData = await Outdoor.findAll ({
@@ -73,7 +78,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/home', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const homeData = await Home.findAll ({
@@ -100,9 +105,8 @@ router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard')
-  } else { (!req.session.logged_in)
-    res.redirect('/')
-  }
+  } 
+
 
 
   res.render('login');

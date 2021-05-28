@@ -1,6 +1,6 @@
-const { User } = require('../models');
+const { Food } = require('../models');
 
-const userData = [
+const foodData = [
     {
         title: "Watercourse",
         cost: "$$",
