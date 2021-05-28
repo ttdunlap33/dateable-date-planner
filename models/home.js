@@ -11,7 +11,7 @@ Home.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activity: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
