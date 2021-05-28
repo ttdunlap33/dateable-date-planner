@@ -9,7 +9,7 @@ const seedAll = async () => {
   console.log('\n----- DATABASE SYNCED -----\n');
 
   await seedHome();
-  console.log('\n----- USERS SEEDED -----\n');
+  console.log('\n----- HOME SEEDED -----\n');
 
   await seedIndoor();
   console.log('\n----- INDOOR SEEDED -----\n');

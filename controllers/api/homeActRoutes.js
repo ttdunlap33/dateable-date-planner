@@ -2,17 +2,17 @@ const router = require('express').Router();
 const { Home } = require('../../models/home');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, (req, res) => { 
+router.get('/', (req, res) => {
   Home.findAll(
   ).then(homeData => {
     if (!homeData) {
-      res.status(404).json({message:"Could not find a home activity with that id."})
+      res.status(404).json({ message: "Could not find a home activity with that id." })
     }
-    const randomIndex = getRandomInt(0, homeData.length)
-    res.json(homeData[randomIndex])}).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    res.json(homeData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
   // find a single restaurant by its `id`
 });
 
@@ -49,12 +49,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
 
 
 module.exports = router;
