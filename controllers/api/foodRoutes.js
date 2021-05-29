@@ -2,16 +2,19 @@ const router = require('express').Router();
 const { Food } = require('../../models/Food');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => { 
-  Food.findAll(
+router.get('/', (req, res) => {
+
+  Food.findAll({
+  }
   ).then(foodData => {
     if (!foodData) {
       res.status(404).json({message:"Could not find any restaurants."})
     }
-    res.json(foodData)}).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    res.json(foodData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 

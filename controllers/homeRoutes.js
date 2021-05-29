@@ -64,20 +64,18 @@ router.get('/outdoor', withAuth, async (req, res) => {
 router.get('/home', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const homeData = await Home.findAll({
-      include: [
-        {
-          model: Home,
-          attributes: ['activity'],
-        },
-      ],
-    });
+    const homeData = await Home.findAll();
+    console.log(homeData);
 
-    const home = homeData.get({ plain: true });
+    // Serialize data so the tempalte can read it
+    const home = homeData.map((home) => home.get({ plain: true }));
+    var index = Math.floor(Math.random() * home.length);
+    var singularRes = home[index];
+    console.log(singularRes);
 
-    res.render('dashboard', {
-      ...home,
-      logged_in: true,
+    res.render('/', {
+      singularRes,
+      logged_in: res.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
