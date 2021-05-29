@@ -14,6 +14,7 @@ router.get('/food', async (req, res) => {
     console.log(singularRes);
     // Pass serialized data and session flag into template
     res.render('home', {
+      loggedIn: req.session.loggedIn,
       food: singularRes
     });
   } catch (err) {
@@ -32,6 +33,7 @@ router.get('/indoor', withAuth, async (req, res) => {
     var singularIn = indoorActivities[index];
     // Pass serialized data and session flag into template
     res.render('home', {
+      loggedIn: req.session.loggedIn,
       indoor: singularIn
     });
   } catch (err) {
@@ -52,6 +54,7 @@ router.get('/outdoor', withAuth, async (req, res) => {
     console.log(singularRes);
     // Pass serialized data and session flag into template
     res.render('home', {
+      loggedIn: req.session.loggedIn,
       outdoor: singularOut
     });
   } catch (err) {
@@ -61,7 +64,145 @@ router.get('/outdoor', withAuth, async (req, res) => {
 
 router.get('/home', async (req, res) => {
   try {
-    // ========== HOME ==========
+    // // ========== HOME ==========
+    // // Find the logged in user based on the session ID
+    // const homeData = await Home.findAll();
+    // // console.log(homeData);
+
+    // // Serialize data so the tempalte can read it
+    // const homeActivities = homeData.map((home) => home.get({ plain: true }));
+    // var index = Math.floor(Math.random() * homeActivities.length);
+    // var singularHome = homeActivities[index];
+
+    // // ========== FOOD ==========
+
+    // // Find the logged in user based on the session ID
+    // const foodData = await Food.findAll();
+    // // console.log(homeData);
+
+    // // Serialize data so the tempalte can read it
+    // const foodActivities = foodData.map((food) => food.get({ plain: true }));
+    // var index = Math.floor(Math.random() * foodActivities.length);
+    // var singularFood = foodActivities[index];
+
+    // // ========== INDOOR ==========
+
+    // // Find the logged in user based on the session ID
+    // const indoorData = await Indoor.findAll();
+    // // console.log(indoorData);
+
+    // // Serialize data so the tempalte can read it
+    // const indoorActivities = indoorData.map((indoor) => indoor.get({ plain: true }));
+    // var index = Math.floor(Math.random() * indoorActivities.length);
+    // var singularIndoor = indoorActivities[index];
+
+    // // ========== OUTDOOR ==========
+
+    // // Find the logged in user based on the session ID
+    // const outdoorData = await Outdoor.findAll();
+    // // console.log(outdoorData);
+
+    // // Serialize data so the tempalte can read it
+    // const outdoorActivities = outdoorData.map((outdoor) => outdoor.get({ plain: true }));
+    // var index = Math.floor(Math.random() * outdoorActivities.length);
+    // var singularOutdoor = outdoorActivities[index];
+
+    // res.render('home', {
+    //   loggedIn: req.session.loggedIn,
+    //   home: singularHome,
+    //   food: singularFood,
+    //   indoor: singularIndoor,
+    //   outdoor: singularOutdoor
+    // });
+
+    res.render('home', {
+      loggedIn: req.session.loggedIn
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect('/dashboard');
+  }
+  else {
+    res.render('login', {
+      loggedIn: req.session.loggedIn
+    });
+  }
+});
+
+router.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
+router.get('/signup', (req, res) => {
+  res.render('signup', {
+    loggedIn: req.session.loggedIn
+  });
+});
+
+router.get('/dashboard', withAuth, async (req, res) => {
+  // ========== HOME ==========
+    // Find the logged in user based on the session ID
+    // const homeData = await Home.findAll();
+    // // console.log(homeData);
+
+    // // Serialize data so the tempalte can read it
+    // const homeActivities = homeData.map((home) => home.get({ plain: true }));
+    // var index = Math.floor(Math.random() * homeActivities.length);
+    // var singularHome = homeActivities[index];
+
+    // // ========== FOOD ==========
+
+    // // Find the logged in user based on the session ID
+    // const foodData = await Food.findAll();
+    // // console.log(homeData);
+
+    // // Serialize data so the tempalte can read it
+    // const foodActivities = foodData.map((food) => food.get({ plain: true }));
+    // var index = Math.floor(Math.random() * foodActivities.length);
+    // var singularFood = foodActivities[index];
+
+    // // ========== INDOOR ==========
+
+    // // Find the logged in user based on the session ID
+    // const indoorData = await Indoor.findAll();
+    // // console.log(indoorData);
+
+    // // Serialize data so the tempalte can read it
+    // const indoorActivities = indoorData.map((indoor) => indoor.get({ plain: true }));
+    // var index = Math.floor(Math.random() * indoorActivities.length);
+    // var singularIndoor = indoorActivities[index];
+
+    // // ========== OUTDOOR ==========
+
+    // // Find the logged in user based on the session ID
+    // const outdoorData = await Outdoor.findAll();
+    // // console.log(outdoorData);
+
+    // // Serialize data so the tempalte can read it
+    // const outdoorActivities = outdoorData.map((outdoor) => outdoor.get({ plain: true }));
+    // var index = Math.floor(Math.random() * outdoorActivities.length);
+    // var singularOutdoor = outdoorActivities[index];
+
+    res.render('dashboard', {
+      loggedIn: true
+    });
+
+
+  // res.render('dashboard', {
+  //   loggedIn: true
+  // });
+});
+
+router.get('/dashboard-random', withAuth, async (req, res) => {
+  // ========== HOME ==========
     // Find the logged in user based on the session ID
     const homeData = await Home.findAll();
     // console.log(homeData);
@@ -104,37 +245,18 @@ router.get('/home', async (req, res) => {
     var index = Math.floor(Math.random() * outdoorActivities.length);
     var singularOutdoor = outdoorActivities[index];
 
-    res.render('home', {
+    res.render('dashboard', {
+      loggedIn: true,
       home: singularHome,
       food: singularFood,
       indoor: singularIndoor,
       outdoor: singularOutdoor
     });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-  }
 
-  res.render('login');
-});
-
-router.get('/', (req, res) => {
-  res.redirect('/home');
-});
-
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+  // res.render('dashboard', {
+  //   loggedIn: true
+  // });
 });
 
 module.exports = router;
