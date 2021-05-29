@@ -6,7 +6,6 @@ router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const foodData = await Food.findAll();
-    console.log(foodData);
 
     // Serialize data so the template can read it
     const restaurant = foodData.map((food) => food.get({ plain: true }));
@@ -14,9 +13,8 @@ router.get('/', async (req, res) => {
     var singularRes = restaurant[index];
     console.log(singularRes);
     // Pass serialized data and session flag into template
-    res.render('/', {
-      singularRes,
-      logged_in: req.session.logged_in,
+    res.render('home', {
+      food: singularRes
     });
   } catch (err) {
     res.status(500).json(err);

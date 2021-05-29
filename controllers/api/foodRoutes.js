@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   Food.findAll(
   ).then(foodData => {
     if (!foodData) {
-      res.status(404).json({message:"Could not find a restaurant with that id."})
+      res.status(404).json({message:"Could not find any restaurants."})
     }
     res.json(foodData)}).catch(err => {
       console.log(err);
