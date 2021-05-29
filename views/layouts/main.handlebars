@@ -7,10 +7,16 @@
 </head>
 
 <body>
-    
+    {{{ body }}}
     {{!-- <p> {{food.title}} {{food.cost}} </p> --}}
 
+    {{#if loggedIn}}
+    <button id="logout">Logout</button>
     <script src="/js/logout.js"></script>
+    {{else}}
+    <button id="login">Login</button>
+    {{/if}}
+
 </body>
 
 

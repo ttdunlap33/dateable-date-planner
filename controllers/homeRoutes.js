@@ -59,21 +59,59 @@ router.get('/outdoor', withAuth, async (req, res) => {
   }
 });
 
-router.get('/home', withAuth, async (req, res) => {
+router.get('/home', async (req, res) => {
   try {
+    // ========== HOME ==========
     // Find the logged in user based on the session ID
     const homeData = await Home.findAll();
-    console.log(homeData);
+    // console.log(homeData);
 
     // Serialize data so the tempalte can read it
     const homeActivities = homeData.map((home) => home.get({ plain: true }));
     var index = Math.floor(Math.random() * homeActivities.length);
-    var singularHome = home[index];
+    var singularHome = homeActivities[index];
 
-    res.render('/home', {
-      home: singularHome
+    // ========== FOOD ==========
+
+    // Find the logged in user based on the session ID
+    const foodData = await Food.findAll();
+    // console.log(homeData);
+
+    // Serialize data so the tempalte can read it
+    const foodActivities = foodData.map((food) => food.get({ plain: true }));
+    var index = Math.floor(Math.random() * foodActivities.length);
+    var singularFood = foodActivities[index];
+
+    // ========== INDOOR ==========
+
+    // Find the logged in user based on the session ID
+    const indoorData = await Indoor.findAll();
+    // console.log(indoorData);
+
+    // Serialize data so the tempalte can read it
+    const indoorActivities = indoorData.map((indoor) => indoor.get({ plain: true }));
+    var index = Math.floor(Math.random() * indoorActivities.length);
+    var singularIndoor = indoorActivities[index];
+
+    // ========== OUTDOOR ==========
+
+    // Find the logged in user based on the session ID
+    const outdoorData = await Outdoor.findAll();
+    // console.log(outdoorData);
+
+    // Serialize data so the tempalte can read it
+    const outdoorActivities = outdoorData.map((outdoor) => outdoor.get({ plain: true }));
+    var index = Math.floor(Math.random() * outdoorActivities.length);
+    var singularOutdoor = outdoorActivities[index];
+
+    res.render('home', {
+      home: singularHome,
+      food: singularFood,
+      indoor: singularIndoor,
+      outdoor: singularOutdoor
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -85,6 +123,18 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard');
 });
 
 module.exports = router;
