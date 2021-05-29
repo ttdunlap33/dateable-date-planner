@@ -3,17 +3,18 @@ const { Home } = require('../../models/home');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-  Home.findAll(
+  Home.findAll({
+
+  }
   ).then(homeData => {
     if (!homeData) {
-      res.status(404).json({ message: "Could not find a home activity with that id." })
+      res.status(404).json({ message:"Could not find any home activities." })
     }
     res.json(homeData)
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
-  // find a single restaurant by its `id`
 });
 
 

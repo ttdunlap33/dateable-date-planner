@@ -3,15 +3,22 @@ const { Outdoor } = require('../../models/outdoor');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
-  Outdoor.findAll(
+  
+  Outdoor.findAll({
+
+  }
   ).then(outdoorData => {
     if (!outdoorData) {
-      res.status(404).json({message:"Could not find a restaurant with that id."})
+      res.status(404).json({message:"Could not find any outdoor activities."})
     }
-    const randomIndex = getRandomInt(0, outdoorData.length)
-    res.json(outdoorData[randomIndex])}).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    res.json(outdoorData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+    // const randomIndex = getRandomInt(0, outdoorData.length)
+    // res.json(outdoorData[randomIndex])}).catch(err => {
+    //   console.log(err);
+    //   res.status(500).json(err);
     });
   // find a single restaurant by its `id`
 });
@@ -50,11 +57,11 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+// }
 
 
 module.exports = router;
