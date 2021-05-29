@@ -3,16 +3,21 @@ const { Indoor } = require('../../models/indoor');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => { 
-  Indoor.findAll(
+  Indoor.findAll({
 
+  }
   ).then(indoorData => {
     if (!indoorData) {
-      res.status(404).json({message:"Could not find an indoor activity with that id."})
+      res.status(404).json({message:"Could not find any indoor activities."})
     }
-    const randomIndex = getRandomInt(0, indoorData.length)
-    res.json(indoorData[randomIndex])}).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    res.json(indoorData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);    
+    // const randomIndex = getRandomInt(0, indoorData.length)
+    // res.json(indoorData[randomIndex])}).catch(err => {
+    //   console.log(err);
+    //   res.status(500).json(err);
     });
   // find a single restaurant by its `id`
 });
