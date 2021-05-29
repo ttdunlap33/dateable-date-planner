@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const foodData = await Food.findAll();
-
+    
     // Serialize data so the template can read it
     const restaurant = foodData.map((food) => food.get({ plain: true }));
     var index = Math.floor(Math.random() * restaurant.length);
