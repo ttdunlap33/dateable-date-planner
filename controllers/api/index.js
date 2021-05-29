@@ -9,6 +9,6 @@ router.use('/users', userRoutes);
 router.use('/food', foodRoutes);
 router.use('/indoor', indoorActRoutes);
 router.use('/outdoor', outdoorActRoutes);
-router.use('/home', homeActRoutes);
+router.use('/homeact', homeActRoutes);
 
 module.exports = router;
