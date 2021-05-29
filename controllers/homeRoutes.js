@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Food, Indoor, Outdoor, Home, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/food', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const foodData = await Food.findAll();
@@ -23,14 +23,16 @@ router.get('/', async (req, res) => {
 
 router.get('/indoor', withAuth, async (req, res) => {
   try {
-    const indoorData = await Indoor.findAll();
-    console.log(indoorData);
-
-    const indoor = indoorData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...indoor,
-      logged_in: req.session.logged_in,
+    // Get all projects and JOIN with user data
+    const indoorData = await indoor.findAll();
+    
+    // Serialize data so the template can read it
+    const indoorActivities = indoorData.map((indoor) => indoor.get({ plain: true }));
+    var index = Math.floor(Math.random() * indoorActivities.length);
+    var singularIn = indoorActivities[index];
+    // Pass serialized data and session flag into template
+    res.render('home', {
+      indoor: singularIn
     });
   } catch (err) {
     res.status(500).json(err);
@@ -40,21 +42,17 @@ router.get('/indoor', withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/outdoor', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const outdoorData = await Outdoor.findAll({
-      include: [
-        {
-          model: Outdoor,
-          attributes: ['activity'],
-        },
-      ],
-    });
-
-    const outdoor = outdoorData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...outdoor,
-      logged_in: true,
+    // Get all projects and JOIN with user data
+    const outdoorData = await Outdoor.findAll();
+    
+    // Serialize data so the template can read it
+    const outdoorActivities = outdoorData.map((outdoor) => outdoor.get({ plain: true }));
+    var index = Math.floor(Math.random() * outdoorActivities.length);
+    var singularOut = outdoorActivities[index];
+    console.log(singularRes);
+    // Pass serialized data and session flag into template
+    res.render('home', {
+      outdoor: singularOut
     });
   } catch (err) {
     res.status(500).json(err);
@@ -68,14 +66,12 @@ router.get('/home', withAuth, async (req, res) => {
     console.log(homeData);
 
     // Serialize data so the tempalte can read it
-    const home = homeData.map((home) => home.get({ plain: true }));
-    var index = Math.floor(Math.random() * home.length);
-    var singularRes = home[index];
-    console.log(singularRes);
+    const homeActivities = homeData.map((home) => home.get({ plain: true }));
+    var index = Math.floor(Math.random() * homeActivities.length);
+    var singularHome = home[index];
 
-    res.render('/', {
-      singularRes,
-      logged_in: res.session.logged_in,
+    res.render('/home', {
+      home: singularHome
     });
   } catch (err) {
     res.status(500).json(err);
