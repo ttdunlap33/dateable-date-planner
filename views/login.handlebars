@@ -2,9 +2,9 @@
   <form id="login-form">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
 
-
+    <fieldset>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="name-login" placeholder="Doe246" autofocus="true">
+      <input type="text" class="form-control" id="name-login" placeholder="Doe246" autofocus="true" id="name">
       <label for="name-login">Name</label>
     </div>
     <div class="form-floating mb-3">
@@ -14,11 +14,16 @@
     <div class="form-floating mb-3">
       <input type="password" class="form-control" id="password-login" placeholder="Password" autofocus="true">
       <label for="password-login">Password</label>
-    </div>
-
-    <button class="w-100 btn btn-lg btn-info mb-3" type="submit">Sign in</button>
-    <a class="login-link" href="/signup">Sign up instead</a>
+    </div> 
+    
+<button type="submit" class="button" style="background-color: black; color: white;">Login</button>
+    {{!-- <button class="w-100 btn btn-lg btn-info mb-3" type="submit">Sign in</button> --}}
+    <a class="login-link" href="/signup" style="color:black;">Sign up instead</a>
+ 
   </form>
+ 
 </main>
 
+
 <script src="/js/login.js"></script>
+</fieldset>
