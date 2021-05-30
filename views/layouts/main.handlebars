@@ -1,24 +1,24 @@
 <html lang='en'>
 
-<head>
+  <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <title>Dateable</title>
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
 
-<body>
-    {{{ body }}}
+  <body>
+    {{{body}}}
     {{!-- <p> {{food.title}} {{food.cost}} </p> --}}
 
     {{#if loggedIn}}
-        <button id="logout">Logout</button>
-        <script src="/js/logout.js"></script>
+      <button id='logout' class="button" style="background-color: black; color: white;">Logout</button>
+      <script src='/js/logout.js'></script>
     {{else}}
-        <a href="/login" class="button" style="background-color: royalblue; color: white;">Login</a>
+       <a href="/login" class="button" style="background-color: black; color: white;">Login</a>
     {{/if}}
 
-</body>
+  </body>
 
 
 
