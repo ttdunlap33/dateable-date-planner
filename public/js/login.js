@@ -17,7 +17,10 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the homepage
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      response.json().then(err => {
+        var errorMessage = "Incorrect login information";
+        alert(errorMessage);
+      });
     }
   }
 };

@@ -37,10 +37,10 @@ p {
 }
 
 fieldset {
-  border: 5px solid #cca383;
-  width: 17%;
-  background: #ffe8e8;
-  padding: 17px;
+  border: 5px solid black;
+  width: 30%;
+  background: white;
+  padding: 25px;
 }
 
 @media (max-width: 901px) {
