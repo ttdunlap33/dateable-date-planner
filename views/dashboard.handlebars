@@ -19,9 +19,15 @@
 
 {{/if}} --}}
 
+<a href="/dashboard-random" class="button"style="background-color: black; color: white;">Randomize</a>
+
+
 {{#if loggedIn}}
 
 {{#if home }}
+
+<a href="/dashboard" class="button"style="background-color: black; color: white;">Back to Dashboard</a>
+
 <h2>Home Activity: {{ home.title }}</h2>
 {{/if}}
 
@@ -38,7 +44,5 @@
 {{/if}}
 
 {{!-- <button id="randomize">Randomize</button> --}}
-<a href="/dashboard-random" class="button"style="background-color: black; color: white;">Randomize</a>
 {{!-- <script src="/js/random.js"></script> --}}
-<br/>
 {{/if}}

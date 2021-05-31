@@ -48,3 +48,25 @@ fieldset {
     max-height: 152px;
   }
 }
+
+footer {
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: left;
+  padding: 1%;
+  font-size: 110%;
+}
+
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.section {
+  flex: 1;
+}
+
+.outline {
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000
+}
