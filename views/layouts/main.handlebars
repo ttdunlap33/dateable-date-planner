@@ -1,28 +1,29 @@
 <html lang='en'>
 
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Dateable</title>
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Dateable</title>
+  <link rel='stylesheet' href='/css/style.css' />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
 
-  <body class="main">
-      <div class="section">
-        {{{body}}}
+<body class="main">
+  <div class="section">
+    {{{body}}}
     {{!-- <p> {{food.title}} {{food.cost}} </p> --}}
-      </div>
+  </div>
 
-    <footer class="footer">
-      {{#if loggedIn}}
-      <button id='logout' class="button" style="background-color: black; color: white;">Logout</button>
-      <script src='/js/logout.js'></script>
+  <footer class="footer">
+    {{#if loggedIn}}
+    <button id='logout' class="button" style="background-color: black; color: white;">Logout</button>
+    <script src='/js/logout.js'></script>
     {{else}}
-       <a href="/login" class="button" style="background-color: black; color: white;">Login</a>
+    <a href="/login" class="button" style="background-color: black; color: white;">Login</a>
     {{/if}}
   </footer>
 
-  </body>
+</body>
 
 
 
