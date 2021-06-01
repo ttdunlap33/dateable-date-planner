@@ -51,7 +51,7 @@
 
   ## Heroku
 
-  [Deploy Application](!https://project-2-dates.herokuapp.com/home)
+  ![Deploy Application](https://project-2-dates.herokuapp.com/home)
   
   ## Questions
   
