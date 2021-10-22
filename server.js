@@ -31,5 +31,25 @@ app.set("view engine", "handlebars");
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
+  const seedAll = async () => {
+    await sequelize.sync({ force: true });
+    console.log('\n----- DATABASE SYNCED -----\n');
+  
+    await seedHome();
+    console.log('\n----- HOME SEEDED -----\n');
+  
+    await seedIndoor();
+    console.log('\n----- INDOOR SEEDED -----\n');
+  
+    await seedFood();
+    console.log('\n----- FOOD SEEDED -----\n');
+  
+    await seedOutdoor();
+    console.log('\n----- OUTDOOR SEEDED -----\n');
+  
+    process.exit(0);
+  };
+  
+  seedAll();
   app.listen(PORT, () => console.log('Now listening'));
 }).catch((err) => {console.error(err)})
